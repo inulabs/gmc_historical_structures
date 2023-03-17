@@ -1,0 +1,110 @@
+#:import hex kivy.utils.get_color_from_hex
+
+<DesktopScreenView>
+    MDBoxLayout:
+        orientation: 'vertical'
+
+        MDTopAppBar:
+            title: "Structures"
+            elevation: 10
+            left_action_items: [['menu', lambda x: nav_drawer.set_state('toggle')]]
+            right_action_items: [['chevron-left', lambda x: app.move_to(-1)], ['chevron-right', lambda x: app.move_to(1)]]
+        Widget:
+            size_hint_y: None
+            height: dp(1)
+
+        MDTabs:
+            id: tabs
+
+            Tab:
+                icon:"information"
+                title: "Details"
+                ScrollView:
+                    size_hint: 1,1
+                    smooth_scroll_end: dp(10)
+                    effect_cls: "ScrollEffect"
+                    bar_width:dp(10)
+
+                    MDBoxLayout:
+                        orientation: "vertical"
+                        adaptive_height: True
+                        spacing: "4dp"
+                        padding: "4dp"
+                        md_bg_color: app.theme_cls.disabled_hint_text_color
+
+                        MDLabel:
+                            id: id
+                            text: "Id"
+                            color: app.theme_cls.text_color
+                            size_hint: (None, None)
+                            markup: True
+                            size: (dp(300), dp(30))
+                        MDLabel:
+                            id: type
+                            text: "Type"
+                            color: app.theme_cls.text_color
+                            size_hint: (None, None)
+                            markup: True
+                            size: (dp(300), dp(30))
+
+                        MDTextField:
+                            id: name
+                            hint_text: "Name"
+                            halign: "left"
+                            color: app.theme_cls.text_color
+                            on_focus: root.parent.set_name(self.focus, self.text)
+                        MDTextField:
+                            id: description
+                            multiline: True
+                            hint_text: "Description"
+                            halign: "left"
+                            color: app.theme_cls.text_color
+                            on_focus: root.parent.set_description(self.focus, self.text)
+                        MDTextField:
+                            id: built_date
+                            hint_text: "Build Date"
+                            halign: "left"
+                            color: app.theme_cls.text_color
+                            on_focus: root.parent.set_built_date(self.focus, self.text)
+                        MDTextField:
+                            id: removal_date
+                            hint_text: "Removal Date"
+                            halign: "left"
+                            color: app.theme_cls.text_color
+                            on_focus: root.parent.set_removal_date(self.focus, self.text)
+                        MDTextField:
+                            id: latitude
+                            hint_text: "Latitude"
+                            halign: "left"
+                            color: app.theme_cls.text_color
+                            on_focus: root.parent.set_latitude(self.focus, self.text)
+                        MDTextField:
+                            id: longitude
+                            hint_text: "Longitude"
+                            halign: "left"
+                            color: app.theme_cls.text_color
+                            on_focus: root.parent.set_longitude(self.focus, self.text)
+                        MDTextField:
+                            id: division
+                            hint_text: "Division"
+                            halign: "left"
+                            color: app.theme_cls.text_color
+                            on_focus: root.parent.set_division(self.focus, self.text)
+                        MDTextField:
+                            id: section
+                            hint_text: "Section"
+                            halign: "left"
+                            color: app.theme_cls.text_color
+                            on_focus: root.parent.set_section(self.focus, self.text)
+            Tab:
+                icon:"image"
+                title: "Photos"
+                BoxLayout:
+                    orientation: "vertical"
+                    MDLabel:
+                        text: "Tab 2"
+                        halign: "left"
+                        color: app.theme_cls.text_color
+    MDNavigationDrawer:
+        id: nav_drawer
+        ContentNavigationDrawer:
