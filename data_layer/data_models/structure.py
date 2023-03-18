@@ -6,8 +6,8 @@ class Structure:
     name: str
     type: str
     description: str
-    build_date: str
-    removed_date: str
+    built_date: str
+    removal_date: str
     latitude: float
     longitude: float
     division: str
@@ -18,11 +18,13 @@ class Structure:
         self.name = row[1]
         self.type = row[2]
         self.description = row[3]
-        self.build_date = row[4]
-        self.removed_date = row[5]
+        self.built_date = row[4]
+        self.removal_date = row[5]
         self.latitude = row[6]
         self.longitude = row[7]
         self.division = row[8]
         self.section = row[9]
 
+    def as_dict(self):
+        return {'id': self.id, 'name': self.name, 'description': self.description, 'type': self.type, 'built_date': self.built_date, 'removal_date': self.removal_date, 'latitude': self.latitude, 'longitude': self.longitude, 'division': self.division, 'section': self.section}
 

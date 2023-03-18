@@ -64,6 +64,7 @@ class gmc_historical_structures(MDApp):
     def on_start(self, **kwargs):
         Window.maximize()
 
+
     def move_to(self, velocity):
         print(velocity)
 

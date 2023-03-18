@@ -1,5 +1,5 @@
 import sqlite3
-from models.section import Section
+from data_layer.data_models.section import Section
 
 
 def fetch_all(cursor):

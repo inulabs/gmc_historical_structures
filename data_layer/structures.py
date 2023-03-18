@@ -1,5 +1,4 @@
-import sqlite3
-from models.structure import Structure
+from data_layer.data_models.structure import Structure
 
 def fetch_all(cursor):
     def fetch_all_structures():
@@ -21,9 +20,24 @@ def add_structure(cursor, connection):
 
 def update_structure(cursor, connection):
     def update_structure(structure):
+        data = (
+            structure.name,
+            structure.type,
+            structure.description,
+            structure.built_date,
+            structure.removal_date,
+            structure.latitude,
+            structure.longitude,
+            structure.division,
+            structure.section,
+            structure.id
+        )
+
+        print(repr(data))
+
         cursor.execute(
-            "UPDATE structures SET name = ?, type = ?, description = ?, build_date = ?, removed_date = ?, latitude = ?, longitude = ?, division = ?, section = ? WHERE id = ?",
-            structure)
+            "UPDATE structures SET name = ?, type = ?, description = ?, built_date = ?, removal_date = ?, latitude = ?, longitude = ?, division = ?, section = ? WHERE id = ?",
+            data)
         connection.commit()
 
     return update_structure

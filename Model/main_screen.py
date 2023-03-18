@@ -9,8 +9,8 @@ class MainScreenModel(BaseScreenModel):
 
     def __init__(self):
         self._id = 0
-        self._name = ""
-        self._description = "description"
+        self._name = "Foobar"
+        self._description = "description!!!!"
         self._type = "Shelter"
         self._built_date = "Built Date"
         self._removal_date = "Removal Date"

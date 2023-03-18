@@ -25,8 +25,13 @@ class MainScreenView(MDResponsiveLayout, BaseScreenView, Observer):
         self.tablet_view = TabletScreenView()
         self.desktop_view = DesktopScreenView()
         self.model.add_observer(self)
+
     controller = ObjectProperty()
     model = ObjectProperty()
+
+
+    def skip(self, direction):
+        self.controller.skip(direction)
 
     def set_id(self, focus, value):
         if not focus:
