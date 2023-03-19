@@ -15,6 +15,16 @@ class MainScreenController:
         self.view = MainScreenView(controller=self, model=self.model)
         self.structures = structures.fetch_all()
         self.currentIndex = 0
+        self.model.id = self.structures[self.currentIndex].id
+        self.model.name = self.structures[self.currentIndex].name
+        self.model.description = self.structures[self.currentIndex].description
+        self.model.type = self.structures[self.currentIndex].type
+        self.model.built_date = self.structures[self.currentIndex].built_date
+        self.model.removal_date = self.structures[self.currentIndex].removal_date
+        self.model.latitude = self.structures[self.currentIndex].latitude
+        self.model.longitude = self.structures[self.currentIndex].longitude
+        self.model.division = self.structures[self.currentIndex].division
+        self.model.section = self.structures[self.currentIndex].section
 
 
     def get_view(self) -> MainScreenView:
@@ -58,7 +68,7 @@ class MainScreenController:
     def set_name(self, value):
         """
         When finished editing the data entry field for `name`, the controller
-        changes the `bame` property of the model.
+        changes the `name` property of the model.
         """
         print("CONTROLLER: SET NAME TO: ", value)
         self.model.name = value

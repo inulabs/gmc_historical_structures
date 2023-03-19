@@ -33,10 +33,18 @@ def update_structure(cursor, connection):
             structure.id
         )
 
-        print(repr(data))
-
         cursor.execute(
-            "UPDATE structures SET name = ?, type = ?, description = ?, built_date = ?, removal_date = ?, latitude = ?, longitude = ?, division = ?, section = ? WHERE id = ?",
+            "UPDATE structures SET "
+            "name = ?, "
+            "type = ?, "
+            "description = ?, "
+            "built_date = ?, "
+            "removal_date = ?, "
+            "latitude = ?, "
+            "longitude = ?, "
+            "division = ?, "
+            "section = ? "
+            "WHERE id = ?",
             data)
         connection.commit()
 
