@@ -11,9 +11,10 @@ def fetch_all(cursor):
 
 
 def add_structure(cursor, connection):
-    def add_structure(structure):
-        cursor.execute("INSERT INTO structures VALUES (structure.name,?,?,?,?,?,?,?,?,?)", structure)
+    def add_structure():
+        cursor.execute("INSERT INTO structures DEFAULT VALUES")
         connection.commit()
+        return cursor.lastrowid
 
     return add_structure
 

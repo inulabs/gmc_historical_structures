@@ -30,6 +30,10 @@ class MainScreenView(MDResponsiveLayout, BaseScreenView, Observer):
     model = ObjectProperty()
 
 
+    def new_record(self):
+        print ("ADDING NEW STRUCTURE")
+        self.controller.new_record()
+
     def skip(self, direction):
         self.controller.skip(direction)
 

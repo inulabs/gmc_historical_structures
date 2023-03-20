@@ -1,7 +1,7 @@
 
 from View.MainScreen.main_screen import MainScreenView
 from data_layer import structures
-
+from Utility.find_index import find_index
 class MainScreenController:
     """
     The `MainScreenController` class represents a controller implementation.
@@ -32,6 +32,21 @@ class MainScreenController:
 
     def get_screen(self) -> MainScreenView:
         return self.view
+
+    def new_record(self):
+        new_id = structures.add_structure()
+        self.structures = structures.fetch_all()
+        self.currentIndex = find_index("id", self.structures, new_id)
+        self.model.id = self.structures[self.currentIndex].id
+        self.model.name = self.structures[self.currentIndex].name
+        self.model.description = self.structures[self.currentIndex].description
+        self.model.type = self.structures[self.currentIndex].type
+        self.model.built_date = self.structures[self.currentIndex].built_date
+        self.model.removal_date = self.structures[self.currentIndex].removal_date
+        self.model.latitude = self.structures[self.currentIndex].latitude
+        self.model.longitude = self.structures[self.currentIndex].longitude
+        self.model.division = self.structures[self.currentIndex].division
+        self.model.section = self.structures[self.currentIndex].section
 
 
     def skip(self, direction):
