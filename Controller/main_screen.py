@@ -33,6 +33,23 @@ class MainScreenController:
     def get_screen(self) -> MainScreenView:
         return self.view
 
+
+
+    def delete_record(self):
+        structures.delete_structure(self.model.id)
+        self.structures = structures.fetch_all()
+        if self.currentIndex > len(self.structures):
+            self.currentIndex = 0
+        self.model.id = self.structures[self.currentIndex].id
+        self.model.name = self.structures[self.currentIndex].name
+        self.model.description = self.structures[self.currentIndex].description
+        self.model.type = self.structures[self.currentIndex].type
+        self.model.built_date = self.structures[self.currentIndex].built_date
+        self.model.removal_date = self.structures[self.currentIndex].removal_date
+        self.model.latitude = self.structures[self.currentIndex].latitude
+        self.model.longitude = self.structures[self.currentIndex].longitude
+        self.model.division = self.structures[self.currentIndex].division
+        self.model.section = self.structures[self.currentIndex].section
     def new_record(self):
         new_id = structures.add_structure()
         self.structures = structures.fetch_all()

@@ -53,8 +53,10 @@ def update_structure(cursor, connection):
 
 
 def delete_structure(cursor, connection):
-    def delete_structure(structure):
-        cursor.execute("DELETE FROM structures WHERE id = ?", structure)
+    def delete_structure(delete_id):
+        my_id = str(delete_id)
+        print("Deleting structure", my_id)
+        cursor.execute("DELETE FROM structures WHERE id=" + my_id)
         connection.commit()
 
     return delete_structure

@@ -30,6 +30,9 @@ class MainScreenView(MDResponsiveLayout, BaseScreenView, Observer):
     model = ObjectProperty()
 
 
+    def delete_record(self):
+        self.controller.delete_record()
+
     def new_record(self):
         print ("ADDING NEW STRUCTURE")
         self.controller.new_record()
