@@ -173,7 +173,7 @@ class MainScreenController:
         """
         print("CONTROLLER: SET DIVISION TO: ", value)
         self.model.division = value
-        structures.update_structure_name(self.model)
+        structures.update_structure(self.model)
 
 
     def set_section(self, value):
@@ -183,7 +183,25 @@ class MainScreenController:
         """
         print("CONTROLLER: SET SECTION TO: ", value)
         self.model.section = value
-        structures.update_structure_name(self.model)
+        structures.update_structure(self.model)
+
+    def set_location(self, value):
+        """
+        When finished editing the data entry field for `Location`, the controller
+        changes the `location` property of the model.
+        """
+        print("CONTROLLER: SET LOCATION TO: ", value)
+        self.model.location = value
+        structures.update_structure(self.model)
+
+    def set_elevation(self, value):
+        """
+        When finished editing the data entry field for `Elevation`, the controller
+        changes the `elevation` property of the model.
+        """
+        print("CONTROLLER: SET ELEVATION TO: ", value)
+        self.model.elevation = value
+        structures.update_structure(self.model)
 
 
 

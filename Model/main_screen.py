@@ -9,15 +9,17 @@ class MainScreenModel(BaseScreenModel):
 
     def __init__(self):
         self._id = 0
-        self._name = "Foobar"
-        self._description = "description!!!!"
-        self._type = "Shelter"
-        self._built_date = "Built Date"
-        self._removal_date = "Removal Date"
-        self._latitude = 0.0
-        self._longitude = 0.0
-        self._division = "Division"
-        self._section = "Section"
+        self._name = ""
+        self._description = ""
+        self._type = ""
+        self._built_date = ""
+        self._removal_date = ""
+        self._latitude = None
+        self._longitude = None
+        self._division = ""
+        self._section = ""
+        self._elevation = None
+        self._location = ""
         self._observers = []
 
     @property
@@ -59,6 +61,14 @@ class MainScreenModel(BaseScreenModel):
     @property
     def division(self):
         return self._division
+
+    @property
+    def elevation(self):
+        return self._elevation
+
+    @property
+    def location(self):
+        return self._location
 
 
     @id.setter
@@ -110,6 +120,16 @@ class MainScreenModel(BaseScreenModel):
     @division.setter
     def division(self, value):
         self._division = value
+        self.notify_observers()
+
+    @elevation.setter
+    def elevation(self, value):
+        self._elevation = value
+        self.notify_observers()
+
+    @location.setter
+    def location(self, value):
+        self._location = value
         self.notify_observers()
 
     def add_observer(self, observer):

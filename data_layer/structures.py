@@ -31,21 +31,13 @@ def update_structure(cursor, connection):
             structure.longitude,
             structure.division,
             structure.section,
+            structure.elevation,
+            structure.location,
             structure.id
         )
 
         cursor.execute(
-            "UPDATE structures SET "
-            "name = ?, "
-            "type = ?, "
-            "description = ?, "
-            "built_date = ?, "
-            "removal_date = ?, "
-            "latitude = ?, "
-            "longitude = ?, "
-            "division = ?, "
-            "section = ? "
-            "WHERE id = ?",
+            "UPDATE structures SET name = ?,  type = ?, description = ?,  built_date = ?,  removal_date = ?,  latitude = ?,  longitude = ?,  division = ?, section = ?,  elevation = ?, location = ? WHERE id = ?",
             data)
         connection.commit()
 

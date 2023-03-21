@@ -23,7 +23,7 @@ class MainScreenView(MDResponsiveLayout, BaseScreenView, Observer):
         self.theme_cls.primary_palette = "Orange"
         self.mobile_view = MobileScreenView()
         self.tablet_view = TabletScreenView()
-        self.desktop_view = DesktopScreenView()
+        self.desktop_view = DesktopScreenView(self.set_type)
         self.model.add_observer(self)
 
     controller = ObjectProperty()
@@ -55,10 +55,9 @@ class MainScreenView(MDResponsiveLayout, BaseScreenView, Observer):
         if not focus:
             self.controller.set_description(value)
 
-    def set_type(self, focus, value):
+    def set_type(self, value):
         print("set_type", "view", value)
-        if not focus:
-            self.controller.set_type(value)
+        self.controller.set_type(value)
 
     def set_built_date(self, focus, value):
         print("set_built_date", "view", value)
@@ -93,6 +92,18 @@ class MainScreenView(MDResponsiveLayout, BaseScreenView, Observer):
 
         if not focus:
             self.controller.set_section(value)
+
+    def set_elevation(self, focus, value):
+        print("set_elevation", "view", value)
+
+        if not focus:
+            self.controller.set_elevation(value)
+
+    def set_location(self, focus, value):
+        print("set_location", "view", value)
+
+        if not focus:
+            self.controller.set_location(value)
 
     def model_is_changed(self) -> None:
         """

@@ -38,6 +38,7 @@ class gmc_historical_structures(MDApp):
         # This is the screen manager that will contain all the screens of your
         # application.
         self.manager_screens = MDScreenManager()
+        self.structure_types = ['shelter', 'lodge', 'tenting area']
 
     def build(self) -> MDScreenManager:
         self.generate_application_screens()

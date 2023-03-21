@@ -30,29 +30,53 @@
                         adaptive_height: True
                         spacing: "4dp"
                         padding: "4dp"
-                        md_bg_color: app.theme_cls.disabled_hint_text_color
+#                        md_bg_color: app.theme_cls.disabled_hint_text_color
 
-                        MDLabel:
-                            id: id
-                            text: "Id"
-                            color: app.theme_cls.text_color
-                            size_hint: (None, None)
-                            markup: True
-                            size: (dp(300), dp(30))
-                        MDLabel:
-                            id: type
-                            text: "Type"
-                            color: app.theme_cls.text_color
-                            size_hint: (None, None)
-                            markup: True
-                            size: (dp(300), dp(30))
+                        MDGridLayout:
+                            cols: 3
+                            adaptive_height: True
+                            spacing: "4dp"
+                            padding: "4dp"
+#                           md_bg_color: app.theme_cls.disabled_hint_text_color
 
-                        MDTextField:
-                            id: name
-                            hint_text: "Name"
-                            halign: "left"
-                            color: app.theme_cls.text_color
-                            on_focus: root.parent.set_name(self.focus, self.text)
+                            MDTextField:
+                                id: name
+                                hint_text: "Name"
+                                halign: "left"
+                                color: app.theme_cls.text_color
+                                on_focus: root.parent.set_name(self.focus, self.text)
+
+
+                            MDRaisedButton:
+                                id: type
+                                text: "PRESS ME"
+                                pos_hint: {"center_x": .5, "center_y": .5}
+                                on_release: root.menu.open()
+
+
+#                            MDDropDownItem:
+#                                id: type
+#                                text: "Type"
+#                                items: root.parent.structure_types
+#                                on_select: root.parent.set_type(self.focus, self.text)
+
+
+#                            MDLabel:
+#                                id: type
+#                                text: "Type"
+#                                color: app.theme_cls.text_color
+#                                size_hint: (None, None)
+#                                markup: True
+#                                size: (dp(300), dp(30))
+
+                            MDLabel:
+                                id: id
+                                text: "Id"
+                                color: app.theme_cls.text_color
+                                size_hint: (None, None)
+                                markup: True
+                                size: (dp(300), dp(30))
+
                         MDTextField:
                             id: description
                             multiline: True
@@ -60,42 +84,84 @@
                             halign: "left"
                             color: app.theme_cls.text_color
                             on_focus: root.parent.set_description(self.focus, self.text)
+
                         MDTextField:
-                            id: built_date
-                            hint_text: "Build Date"
+                            id: location
+                            multiline: True
+                            hint_text: "Location"
                             halign: "left"
                             color: app.theme_cls.text_color
-                            on_focus: root.parent.set_built_date(self.focus, self.text)
-                        MDTextField:
-                            id: removal_date
-                            hint_text: "Removal Date"
-                            halign: "left"
-                            color: app.theme_cls.text_color
-                            on_focus: root.parent.set_removal_date(self.focus, self.text)
-                        MDTextField:
-                            id: latitude
-                            hint_text: "Latitude"
-                            halign: "left"
-                            color: app.theme_cls.text_color
-                            on_focus: root.parent.set_latitude(self.focus, self.text)
-                        MDTextField:
-                            id: longitude
-                            hint_text: "Longitude"
-                            halign: "left"
-                            color: app.theme_cls.text_color
-                            on_focus: root.parent.set_longitude(self.focus, self.text)
-                        MDTextField:
-                            id: division
-                            hint_text: "Division"
-                            halign: "left"
-                            color: app.theme_cls.text_color
-                            on_focus: root.parent.set_division(self.focus, self.text)
-                        MDTextField:
-                            id: section
-                            hint_text: "Section"
-                            halign: "left"
-                            color: app.theme_cls.text_color
-                            on_focus: root.parent.set_section(self.focus, self.text)
+                            on_focus: root.parent.set_description(self.focus, self.text)
+
+                        MDGridLayout:
+                            cols: 2
+                            adaptive_height: True
+                            spacing: "4dp"
+                            padding: "4dp"
+ #                           md_bg_color: app.theme_cls.disabled_hint_text_color
+
+                            MDTextField:
+                                id: built_date
+                                hint_text: "Build Date"
+                                halign: "left"
+                                color: app.theme_cls.text_color
+                                on_focus: root.parent.set_built_date(self.focus, self.text)
+                            MDTextField:
+                                id: removal_date
+                                hint_text: "Removal Date"
+                                halign: "left"
+                                color: app.theme_cls.text_color
+                                on_focus: root.parent.set_removal_date(self.focus, self.text)
+
+                        MDGridLayout:
+                            cols: 3
+                            adaptive_height: True
+                            spacing: "4dp"
+                            padding: "4dp"
+#                           md_bg_color: app.theme_cls.disabled_hint_text_color
+
+                            MDTextField:
+                                id: latitude
+                                hint_text: "Latitude"
+                                halign: "left"
+                                color: app.theme_cls.text_color
+                                on_focus: root.parent.set_latitude(self.focus, self.text)
+
+                            MDTextField:
+                                id: longitude
+                                hint_text: "Longitude"
+                                halign: "left"
+                                color: app.theme_cls.text_color
+                                on_focus: root.parent.set_longitude(self.focus, self.text)
+
+
+                            MDTextField:
+                                id: elevation
+                                hint_text: "Elevation"
+                                halign: "left"
+                                color: app.theme_cls.text_color
+                                on_focus: root.parent.set_longitude(self.focus, self.text)
+
+
+                        MDGridLayout:
+                            cols: 2
+                            adaptive_height: True
+                            spacing: "4dp"
+                            padding: "4dp"
+#                           md_bg_color: app.theme_cls.disabled_hint_text_color
+
+                            MDTextField:
+                                id: division
+                                hint_text: "Division"
+                                halign: "left"
+                                color: app.theme_cls.text_color
+                                on_focus: root.parent.set_division(self.focus, self.text)
+                            MDTextField:
+                                id: section
+                                hint_text: "Section"
+                                halign: "left"
+                                color: app.theme_cls.text_color
+                                on_focus: root.parent.set_section(self.focus, self.text)
             Tab:
                 icon:"image"
                 title: "Photos"
