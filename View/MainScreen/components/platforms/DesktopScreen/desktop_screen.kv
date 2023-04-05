@@ -1,4 +1,6 @@
-#:import hex kivy.utils.get_color_from_hex
+
+
+
 
 <DesktopScreenView>
     MDBoxLayout:
@@ -156,21 +158,86 @@
                                 halign: "left"
                                 color: app.theme_cls.text_color
                                 on_focus: root.parent.set_division(self.focus, self.text)
-                            MDTextField:
+
+                            MDRaisedButton:
                                 id: section
-                                hint_text: "Section"
-                                halign: "left"
-                                color: app.theme_cls.text_color
-                                on_focus: root.parent.set_section(self.focus, self.text)
+                                text: "Select Section"
+                                pos_hint: {"center_x": .5, "center_y": .5}
+                                on_release: root.sections_menu.open()
+#                            MDTextField:
+#                                id: section
+#                                hint_text: "Section"
+#                                halign: "left"
+#                                color: app.theme_cls.text_color
+#                                on_focus: root.parent.set_section(self.focus, self.text)
             Tab:
                 icon:"image"
                 title: "Photos"
+                ScrollView:
+                    MDGridLayout:
+                        cols: 3
+                        row_default_height:  dp(600) #(self.width - self.cols * self.spacing[0]) / self.cols
+                        row_force_default: True
+                        adaptive_height: True
+                        padding: dp(4), dp(4)
+                        spacing: dp(4)
+                        id: photos
+
+
                 BoxLayout:
                     orientation: "vertical"
-                    MDLabel:
-                        text: "Tab 2"
-                        halign: "left"
-                        color: app.theme_cls.text_color
+
+                    MDRoundFlatIconButton:
+                        text: "Upload Photo"
+                        icon: "photo"
+                        on_release: root.file_manager_open()
     MDNavigationDrawer:
         id: nav_drawer
         ContentNavigationDrawer:
+
+
+
+<ImageBox>:
+    MDGridLayout:
+        cols: 1
+        #orientation: 'vertical'
+        Image:
+            id: image
+            size_hint: None, None
+            size: dp(500), dp(500)
+ #           src: root.image.path
+        MDTextField:
+            id: title
+            hint_text: "Title"
+            halign: "left"
+            color: app.theme_cls.text_color
+            on_focus: root.set_image_title(self.focus, self.text)
+        MDTextField:
+            id: image_date
+            multiline: False
+            hint_text: "Date"
+            halign: "left"
+            color: app.theme_cls.text_color
+            on_focus: root.set_image_date(self.focus, self.text)
+
+        MDTextField:
+            id: caption
+            multiline: False
+            hint_text: "Caption"
+            halign: "left"
+            color: app.theme_cls.text_color
+            on_focus: root.set_image_caption(self.focus, self.text)
+
+        MDTextField:
+            id: description
+            multiline: True
+            hint_text: "Description"
+            halign: "left"
+            color: app.theme_cls.text_color
+            on_focus: root.set_image_description(self.focus, self.text)
+
+        MDRaisedButton:
+            id: delete
+            text: "Delete"
+            pos_hint: {"center_x": .5, "center_y": .5}
+            on_release: root.delete_image()

@@ -20,6 +20,7 @@ class MainScreenModel(BaseScreenModel):
         self._section = ""
         self._elevation = None
         self._location = ""
+        self._images = []
         self._observers = []
 
     @property
@@ -70,6 +71,9 @@ class MainScreenModel(BaseScreenModel):
     def location(self):
         return self._location
 
+    @property
+    def images(self):
+        return self._images
 
     @id.setter
     def id(self, value):
@@ -131,7 +135,10 @@ class MainScreenModel(BaseScreenModel):
     def location(self, value):
         self._location = value
         self.notify_observers()
-
+    @images.setter
+    def images(self, value: list):
+        self._images = value or []
+        self.notify_observers()
     def add_observer(self, observer):
         self._observers.append(observer)
 

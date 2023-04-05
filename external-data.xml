@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data>
+  <object-set>
+    <table path="main.structure_images">
+      <table path="main.images" name="image_id" from="" to=""/>
+    </table>
+  </object-set>
+</data>

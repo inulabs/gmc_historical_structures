@@ -1,3 +1,6 @@
+from kivy.uix.modalview import ModalView
+from kivymd.toast import toast
+from kivymd.uix.filemanager import MDFileManager
 from kivymd.uix.floatlayout import MDFloatLayout
 from kivymd.uix.responsivelayout import MDResponsiveLayout
 from kivymd.uix.tab import MDTabsBase
@@ -23,15 +26,27 @@ class MainScreenView(MDResponsiveLayout, BaseScreenView, Observer):
         self.theme_cls.primary_palette = "Orange"
         self.mobile_view = MobileScreenView()
         self.tablet_view = TabletScreenView()
-        self.desktop_view = DesktopScreenView(self.set_type)
+        self.desktop_view = DesktopScreenView(self.set_type, self.set_section, self.get_sections, self.add_image, self.delete_image, self.update_image)
         self.model.add_observer(self)
+
 
     controller = ObjectProperty()
     model = ObjectProperty()
 
+    def update_image(self, image):
+        self.controller.update_image(image)
+
+    def add_image(self, id, path):
+        self.controller.add_structure_image(id, path)
+
+    def get_sections(self):
+        return self.controller.get_sections()
 
     def delete_record(self):
         self.controller.delete_record()
+
+    def delete_image(self, id):
+        self.controller.delete_image(id)
 
     def new_record(self):
         print ("ADDING NEW STRUCTURE")
@@ -87,14 +102,12 @@ class MainScreenView(MDResponsiveLayout, BaseScreenView, Observer):
         if not focus:
             self.controller.set_division(value)
 
-    def set_section(self, focus, value):
-        print("set_section", "view", value)
-
-        if not focus:
-            self.controller.set_section(value)
+    def set_section(self, value):
+        print("VIEW: SET SECTION TO: ", value)
+        self.controller.set_section(value)
 
     def set_elevation(self, focus, value):
-        print("set_elevation", "view", value)
+        print("VIEW: SET ELEVATION TO:", value)
 
         if not focus:
             self.controller.set_elevation(value)
@@ -114,4 +127,6 @@ class MainScreenView(MDResponsiveLayout, BaseScreenView, Observer):
         self.desktop_view.on_model_change(self.model)
         self.tablet_view.on_model_change(self.model)
         self.mobile_view.on_model_change(self.model)
+
+
 

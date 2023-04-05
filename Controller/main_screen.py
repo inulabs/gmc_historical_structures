@@ -1,7 +1,10 @@
 
 from View.MainScreen.main_screen import MainScreenView
-from data_layer import structures
+from data_layer import structures, sections, images
 from Utility.find_index import find_index
+from data_layer.data_models.image import Image
+
+
 class MainScreenController:
     """
     The `MainScreenController` class represents a controller implementation.
@@ -9,7 +12,6 @@ class MainScreenController:
     The controller implements the strategy pattern. The controller connects to
     the view to control its actions.
     """
-
     def __init__(self, model):
         self.model = model  # Model.main_screen.MainScreenModel
         self.view = MainScreenView(controller=self, model=self.model)
@@ -25,7 +27,11 @@ class MainScreenController:
         self.model.longitude = self.structures[self.currentIndex].longitude
         self.model.division = self.structures[self.currentIndex].division
         self.model.section = self.structures[self.currentIndex].section
+        my_images = images.fetch_all_by_structure(self.model.id)
+        self.model.images = my_images
 
+    def build(self):
+        self.view.build()
 
     def get_view(self) -> MainScreenView:
         return self.view
@@ -33,7 +39,8 @@ class MainScreenController:
     def get_screen(self) -> MainScreenView:
         return self.view
 
-
+    def get_sections(self):
+        return sections.fetch_all()
 
     def delete_record(self):
         structures.delete_structure(self.model.id)
@@ -50,6 +57,8 @@ class MainScreenController:
         self.model.longitude = self.structures[self.currentIndex].longitude
         self.model.division = self.structures[self.currentIndex].division
         self.model.section = self.structures[self.currentIndex].section
+        my_images = images.fetch_all_by_structure(self.model.id)
+        self.model.images = my_images
     def new_record(self):
         new_id = structures.add_structure()
         self.structures = structures.fetch_all()
@@ -64,6 +73,8 @@ class MainScreenController:
         self.model.longitude = self.structures[self.currentIndex].longitude
         self.model.division = self.structures[self.currentIndex].division
         self.model.section = self.structures[self.currentIndex].section
+        my_images = images.fetch_all_by_structure(self.model.id)
+        self.model.images = my_images
 
 
     def skip(self, direction):
@@ -87,6 +98,9 @@ class MainScreenController:
         self.model.longitude = self.structures[self.currentIndex].longitude
         self.model.division = self.structures[self.currentIndex].division
         self.model.section = self.structures[self.currentIndex].section
+        my_images = images.fetch_all_by_structure(self.structures[self.currentIndex].id)
+        self.model.images = my_images
+
         print("New Model", self.model)
 
 
@@ -203,6 +217,30 @@ class MainScreenController:
         self.model.elevation = value
         structures.update_structure(self.model)
 
+    def set_images(self, value):
+        """
+        When finished editing the data entry field for `Images`, the controller
+        changes the `images` property of the model.
+        """
+        print("CONTROLLER: SET IMAGES TO: ", value)
+        self.model.images = value
+        images.update_structure_image(self.model)
 
+    def add_structure_image(self, id, file):
+        print("CONTROLLER: ADD STRUCTURE IMAGE TO: ", id, file)
+        images.add_structure_image(id, file)
+        self.model.images = images.fetch_all_by_structure(id)
+
+    def delete_image(self, id):
+        print("CONTROLLER: DELETE IMAGE: ", id)
+        images.delete_image(id)
+        self.model.images = images.fetch_all_by_structure(self.model.id)
+
+    def update_image(self, image):
+        print("CONTROLLER: UPDATE STRUCTURE IMAGE TO: ", image)
+        images.update_image(image)
+        my_images = images.fetch_all_by_structure(self.model.id)
+        print(my_images)
+        self.model.images = my_images
 
 
