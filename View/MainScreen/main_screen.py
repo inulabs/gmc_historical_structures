@@ -25,8 +25,8 @@ class MainScreenView(MDResponsiveLayout, BaseScreenView, Observer):
         self.theme_cls.theme_style = "Dark"
         self.theme_cls.primary_palette = "Orange"
         self.mobile_view = MobileScreenView()
-        self.tablet_view = TabletScreenView()
-        self.desktop_view = DesktopScreenView(self.set_type, self.set_section, self.get_sections, self.add_image, self.delete_image, self.update_image, self.nav_to_strucure)
+        self.tablet_view = TabletScreenView(self.set_type, self.set_section, self.get_sections, self.add_image, self.delete_image, self.update_image)
+        self.desktop_view = DesktopScreenView(self.set_type, self.set_section, self.get_sections, self.add_image, self.delete_image, self.update_image)
         self.model.add_observer(self)
 
 
@@ -51,11 +51,6 @@ class MainScreenView(MDResponsiveLayout, BaseScreenView, Observer):
     def new_record(self):
         print ("ADDING NEW STRUCTURE")
         self.controller.new_record()
-
-
-
-    def nav_to_strucure(self, sid):
-        self.controller.nav_to_structure(sid)
 
     def skip(self, direction):
         self.controller.skip(direction)
@@ -132,5 +127,6 @@ class MainScreenView(MDResponsiveLayout, BaseScreenView, Observer):
         self.desktop_view.on_model_change(self.model)
         self.tablet_view.on_model_change(self.model)
         self.mobile_view.on_model_change(self.model)
+
 
 
