@@ -32,17 +32,16 @@
                     MDBoxLayout:
                         orientation: "vertical"
                         adaptive_height: True
-                        spacing: "4dp"
-                        padding: "4dp"
+                        padding: "20dp"
 
                         Widget:
                             size_hint_y: None
                             height: dp(100)
 
                         MDBoxLayout:
-                            orientation: "horizontal"
-                            spacing: "4dp"
-                            padding: "4dp"
+                            spacing: "20dp"
+
+                            adaptive_height: True
 
 
                             MDTextField:
@@ -51,37 +50,49 @@
                                 halign: "left"
                                 color: app.theme_cls.text_color
                                 on_focus: root.parent.set_name(self.focus, self.text)
+                                pos_hint: {"center_x": .5, "center_y": 0}
 
 
                             MDRaisedButton:
                                 id: type
                                 text: "PRESS ME"
-                                pos_hint: {"center_x": .5, "center_y": .5}
+                                pos_hint: {"center_x": .5, "center_y": 0}
                                 on_release: root.menu.open()
 
-
-                        MDTextField:
-                            id: description
-                            multiline: True
-                            hint_text: "Description"
-                            halign: "left"
-                            color: app.theme_cls.text_color
-                            on_focus: root.parent.set_description(self.focus, self.text)
-
-                        MDTextField:
-                            id: location
-                            multiline: True
-                            hint_text: "Location"
-                            halign: "left"
-                            color: app.theme_cls.text_color
-                            on_focus: root.parent.set_description(self.focus, self.text)
-
-                        MDGridLayout:
-                            cols: 2
+                        MDBoxLayout:
+                            orientation: "horizontal"
                             adaptive_height: True
-                            spacing: "4dp"
-                            padding: "4dp"
- #                           md_bg_color: app.theme_cls.disabled_hint_text_color
+                            spacing: "20dp"
+                            pos_hint: {"center_x": .5, "center_y": 0}
+
+                            MDTextField:
+                                id: description
+                                multiline: True
+                                hint_text: "Description"
+                                halign: "left"
+                                color: app.theme_cls.text_color
+                                on_focus: root.parent.set_description(self.focus, self.text)
+                                pos_hint: {"center_x": .5, "center_y": 0}
+                        MDBoxLayout:
+                            orientation: "horizontal"
+                            adaptive_height: True
+                            spacing: "20dp"
+                            pos_hint: {"center_x": .5, "center_y": 0}
+
+                            MDTextField:
+                                id: location
+                                multiline: True
+                                hint_text: "Location"
+                                halign: "left"
+                                color: app.theme_cls.text_color
+                                on_focus: root.parent.set_description(self.focus, self.text)
+                                pos_hint: {"center_x": .5, "center_y": 0}
+
+                        MDBoxLayout:
+                            orientation: "horizontal"
+                            adaptive_height: True
+                            spacing: "20dp"
+                            pos_hint: {"center_x": .5, "center_y": 0}
 
                             MDTextField:
                                 id: built_date
@@ -89,19 +100,21 @@
                                 halign: "left"
                                 color: app.theme_cls.text_color
                                 on_focus: root.parent.set_built_date(self.focus, self.text)
+                                pos_hint: {"center_x": .5, "center_y": 0}
+
                             MDTextField:
                                 id: removal_date
                                 hint_text: "Removal Date"
                                 halign: "left"
                                 color: app.theme_cls.text_color
                                 on_focus: root.parent.set_removal_date(self.focus, self.text)
+                                pos_hint: {"center_x": .5, "center_y": 0}
 
-                        MDGridLayout:
-                            cols: 3
+                        MDBoxLayout:
+                            orientation: "horizontal"
                             adaptive_height: True
-                            spacing: "4dp"
-                            padding: "4dp"
-#                           md_bg_color: app.theme_cls.disabled_hint_text_color
+                            spacing: "20dp"
+
 
                             MDTextField:
                                 id: latitude
@@ -109,6 +122,7 @@
                                 halign: "left"
                                 color: app.theme_cls.text_color
                                 on_focus: root.parent.set_latitude(self.focus, self.text)
+                                pos_hint: {"center_x": .5, "center_y": 0}
 
                             MDTextField:
                                 id: longitude
@@ -116,6 +130,7 @@
                                 halign: "left"
                                 color: app.theme_cls.text_color
                                 on_focus: root.parent.set_longitude(self.focus, self.text)
+                                pos_hint: {"center_x": .5, "center_y": 0}
 
 
                             MDTextField:
@@ -124,33 +139,31 @@
                                 halign: "left"
                                 color: app.theme_cls.text_color
                                 on_focus: root.parent.set_longitude(self.focus, self.text)
+                                pos_hint: {"center_x": .5, "center_y": 0}
 
 
-                        MDGridLayout:
-                            cols: 2
+                        MDBoxLayout:
+                            orientation: "horizontal"
                             adaptive_height: True
-                            spacing: "4dp"
-                            padding: "4dp"
-#                           md_bg_color: app.theme_cls.disabled_hint_text_color
+                            spacing: "20dp"
+
 
                             MDTextField:
                                 id: division
                                 hint_text: "Division"
+                                pos_hint: {"center_x": .5, "center_y": 0}
                                 halign: "left"
                                 color: app.theme_cls.text_color
                                 on_focus: root.parent.set_division(self.focus, self.text)
+                                pos_hint: {"center_x": .5, "center_y": 0}
 
                             MDRaisedButton:
                                 id: section
                                 text: "Select Section"
-                                pos_hint: {"center_x": .5, "center_y": .5}
+                                pos_hint: {"center_x": .5, "center_y": 0}
                                 on_release: root.sections_menu.open()
-#                            MDTextField:
-#                                id: section
-#                                hint_text: "Section"
-#                                halign: "left"
-#                                color: app.theme_cls.text_color
-#                                on_focus: root.parent.set_section(self.focus, self.text)
+                                pos_hint: {"center_x": .5, "center_y": 0}
+
             Tab:
                 icon:"image"
                 title: "Photos"
