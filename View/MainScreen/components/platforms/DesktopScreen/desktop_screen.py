@@ -82,7 +82,7 @@ class DesktopScreenView(MDScreen):
         )
 
     def on_model_change(self, model):
-        self.ids.id.text = str(model.id or "")
+        self.ids.top_bar.title = "Structures: " + str(model.id or "")
         self.ids.name.text = str(model.name or "")
         self.ids.description.text = str(model.description or "")
         self.ids.type.text = str(model.type or "Select").lower()

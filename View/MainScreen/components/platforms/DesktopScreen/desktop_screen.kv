@@ -7,7 +7,8 @@
         orientation: 'vertical'
 
         MDTopAppBar:
-            title: "Structures"
+            id: top_bar
+            title: "Structures: "
             elevation: 10
             left_action_items: [['menu', lambda x: nav_drawer.set_state('toggle')]]
             right_action_items: [['minus-box', lambda x: root.parent.delete_record()],['plus-box', lambda x: root.parent.new_record()],['chevron-left', lambda x: root.parent.skip(-1)], ['chevron-right', lambda x: root.parent.skip(1)]]
@@ -27,19 +28,22 @@
                     effect_cls: "ScrollEffect"
                     bar_width:dp(10)
 
+
                     MDBoxLayout:
                         orientation: "vertical"
                         adaptive_height: True
                         spacing: "4dp"
                         padding: "4dp"
-#                        md_bg_color: app.theme_cls.disabled_hint_text_color
 
-                        MDGridLayout:
-                            cols: 3
-                            adaptive_height: True
+                        Widget:
+                            size_hint_y: None
+                            height: dp(100)
+
+                        MDBoxLayout:
+                            orientation: "horizontal"
                             spacing: "4dp"
                             padding: "4dp"
-#                           md_bg_color: app.theme_cls.disabled_hint_text_color
+
 
                             MDTextField:
                                 id: name
@@ -55,29 +59,6 @@
                                 pos_hint: {"center_x": .5, "center_y": .5}
                                 on_release: root.menu.open()
 
-
-#                            MDDropDownItem:
-#                                id: type
-#                                text: "Type"
-#                                items: root.parent.structure_types
-#                                on_select: root.parent.set_type(self.focus, self.text)
-
-
-#                            MDLabel:
-#                                id: type
-#                                text: "Type"
-#                                color: app.theme_cls.text_color
-#                                size_hint: (None, None)
-#                                markup: True
-#                                size: (dp(300), dp(30))
-
-                            MDLabel:
-                                id: id
-                                text: "Id"
-                                color: app.theme_cls.text_color
-                                size_hint: (None, None)
-                                markup: True
-                                size: (dp(300), dp(30))
 
                         MDTextField:
                             id: description
