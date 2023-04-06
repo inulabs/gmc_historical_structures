@@ -27,6 +27,7 @@ class MainScreenController:
         self.model.longitude = self.structures[self.currentIndex].longitude
         self.model.division = self.structures[self.currentIndex].division
         self.model.section = self.structures[self.currentIndex].section
+        self.model.structure_list = [(s.id, s.name) for s in self.structures]
         my_images = images.fetch_all_by_structure(self.model.id)
         self.model.images = my_images
 
@@ -103,7 +104,20 @@ class MainScreenController:
 
         print("New Model", self.model)
 
-
+    def nav_to_structure(self, sid):
+        self.currentIndex = next(i for i, s in enumerate(self.structures) if s.id == sid)
+        self.model.id = self.structures[self.currentIndex].id
+        self.model.name = self.structures[self.currentIndex].name
+        self.model.description = self.structures[self.currentIndex].description
+        self.model.type = self.structures[self.currentIndex].type
+        self.model.built_date = self.structures[self.currentIndex].built_date
+        self.model.removal_date = self.structures[self.currentIndex].removal_date
+        self.model.latitude = self.structures[self.currentIndex].latitude
+        self.model.longitude = self.structures[self.currentIndex].longitude
+        self.model.division = self.structures[self.currentIndex].division
+        self.model.section = self.structures[self.currentIndex].section
+        my_images = images.fetch_all_by_structure(self.structures[self.currentIndex].id)
+        self.model.images = my_images
     def set_id(self, value):
         """
         When finished editing the data entry field for `ID`, the controller

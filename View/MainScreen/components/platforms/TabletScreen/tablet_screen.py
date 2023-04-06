@@ -36,8 +36,9 @@ class ContentNavigationDrawer(BoxLayout):
 
 class TabletScreenView(MDScreen):
 
-    def __init__(self, set_type, set_section, get_sections, add_image, delete_image, update_image, **kw):
+    def __init__(self, set_type, set_section, get_sections, add_image, delete_image, update_image, nav_to_structure, **kw):
         super().__init__(**kw)
+        self.nav_to_structure = nav_to_structure
         self.update_image = update_image
         self.delete_image = delete_image
         self.add_image = add_image

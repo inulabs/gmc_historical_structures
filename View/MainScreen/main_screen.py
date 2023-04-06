@@ -25,8 +25,8 @@ class MainScreenView(MDResponsiveLayout, BaseScreenView, Observer):
         self.theme_cls.theme_style = "Dark"
         self.theme_cls.primary_palette = "Orange"
         self.mobile_view = MobileScreenView()
-        self.tablet_view = TabletScreenView(self.set_type, self.set_section, self.get_sections, self.add_image, self.delete_image, self.update_image)
-        self.desktop_view = DesktopScreenView(self.set_type, self.set_section, self.get_sections, self.add_image, self.delete_image, self.update_image)
+        self.tablet_view = TabletScreenView(self.set_type, self.set_section, self.get_sections, self.add_image, self.delete_image, self.update_image, self.nav_to_structure)
+        self.desktop_view = DesktopScreenView(self.set_type, self.set_section, self.get_sections, self.add_image, self.delete_image, self.update_image, self.nav_to_structure)
         self.model.add_observer(self)
 
 
@@ -55,6 +55,8 @@ class MainScreenView(MDResponsiveLayout, BaseScreenView, Observer):
     def skip(self, direction):
         self.controller.skip(direction)
 
+    def nav_to_structure(self, sid):
+        self.controller.nav_to_structure(sid)
     def set_id(self, focus, value):
         if not focus:
             self.controller.set_id(value)

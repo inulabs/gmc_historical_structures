@@ -1,7 +1,3 @@
-
-
-
-
 <DesktopScreenView>
     MDBoxLayout:
         orientation: 'vertical'
@@ -11,7 +7,7 @@
             title: "Structures: "
             elevation: 10
             left_action_items: [['menu', lambda x: nav_drawer.set_state('toggle')]]
-            right_action_items: [['minus-box', lambda x: root.parent.delete_record()],['plus-box', lambda x: root.parent.new_record()],['chevron-left', lambda x: root.parent.skip(-1)], ['chevron-right', lambda x: root.parent.skip(1)]]
+            right_action_items: [['minus', lambda x: root.parent.delete_record()],['plus', lambda x: root.parent.new_record()],['chevron-left', lambda x: root.parent.skip(-1)], ['chevron-right', lambda x: root.parent.skip(1)],["dots-vertical", lambda x: root.structure_nav_open(x)]]
         Widget:
             size_hint_y: None
             height: dp(1)

@@ -72,7 +72,6 @@ class MainScreenModel(BaseScreenModel):
     def location(self):
         return self._location
 
-
     @property
     def structure_list(self):
         return self._structure_list
