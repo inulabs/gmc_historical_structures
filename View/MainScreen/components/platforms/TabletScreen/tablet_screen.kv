@@ -24,18 +24,14 @@
                     effect_cls: "ScrollEffect"
                     bar_width:dp(10)
 
-
                     MDBoxLayout:
                         orientation: "vertical"
                         adaptive_height: True
                         padding: "20dp"
 
-
                         MDBoxLayout:
                             spacing: "20dp"
-
                             adaptive_height: True
-
 
                             MDTextField:
                                 id: name
@@ -66,6 +62,7 @@
                                 color: app.theme_cls.text_color
                                 on_focus: root.parent.set_description(self.focus, self.text)
                                 pos_hint: {"center_x": .5, "center_y": 0}
+
                         MDBoxLayout:
                             orientation: "horizontal"
                             adaptive_height: True
