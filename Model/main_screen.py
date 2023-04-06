@@ -21,6 +21,7 @@ class MainScreenModel(BaseScreenModel):
         self._elevation = None
         self._location = ""
         self._images = []
+        self._structure_list = []
         self._observers = []
 
     @property
@@ -70,6 +71,11 @@ class MainScreenModel(BaseScreenModel):
     @property
     def location(self):
         return self._location
+
+
+    @property
+    def structure_list(self):
+        return self._structure_list
 
     @property
     def images(self):
@@ -138,6 +144,11 @@ class MainScreenModel(BaseScreenModel):
     @images.setter
     def images(self, value: list):
         self._images = value or []
+        self.notify_observers()
+
+    @structure_list.setter
+    def structure_list(self, value: list):
+        self._structure_list = value or []
         self.notify_observers()
     def add_observer(self, observer):
         self._observers.append(observer)

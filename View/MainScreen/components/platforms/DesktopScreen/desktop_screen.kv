@@ -1,7 +1,3 @@
-
-
-
-
 <DesktopScreenView>
     MDBoxLayout:
         orientation: 'vertical'
@@ -10,7 +6,7 @@
             title: "Structures"
             elevation: 10
             left_action_items: [['menu', lambda x: nav_drawer.set_state('toggle')]]
-            right_action_items: [['minus-box', lambda x: root.parent.delete_record()],['plus-box', lambda x: root.parent.new_record()],['chevron-left', lambda x: root.parent.skip(-1)], ['chevron-right', lambda x: root.parent.skip(1)]]
+            right_action_items: [['minus', lambda x: root.parent.delete_record()],['plus', lambda x: root.parent.new_record()],['chevron-left', lambda x: root.parent.skip(-1)], ['chevron-right', lambda x: root.parent.skip(1)],["dots-vertical", lambda x: root.structure_nav_open(x)]]
         Widget:
             size_hint_y: None
             height: dp(1)
@@ -43,33 +39,10 @@
 
                             MDTextField:
                                 id: name
-                                hint_text: "Name"
+
                                 halign: "left"
                                 color: app.theme_cls.text_color
                                 on_focus: root.parent.set_name(self.focus, self.text)
-
-
-                            MDRaisedButton:
-                                id: type
-                                text: "PRESS ME"
-                                pos_hint: {"center_x": .5, "center_y": .5}
-                                on_release: root.menu.open()
-
-
-#                            MDDropDownItem:
-#                                id: type
-#                                text: "Type"
-#                                items: root.parent.structure_types
-#                                on_select: root.parent.set_type(self.focus, self.text)
-
-
-#                            MDLabel:
-#                                id: type
-#                                text: "Type"
-#                                color: app.theme_cls.text_color
-#                                size_hint: (None, None)
-#                                markup: True
-#                                size: (dp(300), dp(30))
 
                             MDLabel:
                                 id: id
@@ -82,7 +55,7 @@
                         MDTextField:
                             id: description
                             multiline: True
-                            hint_text: "Description"
+
                             halign: "left"
                             color: app.theme_cls.text_color
                             on_focus: root.parent.set_description(self.focus, self.text)
@@ -90,7 +63,7 @@
                         MDTextField:
                             id: location
                             multiline: True
-                            hint_text: "Location"
+
                             halign: "left"
                             color: app.theme_cls.text_color
                             on_focus: root.parent.set_description(self.focus, self.text)
@@ -104,13 +77,13 @@
 
                             MDTextField:
                                 id: built_date
-                                hint_text: "Build Date"
+
                                 halign: "left"
                                 color: app.theme_cls.text_color
                                 on_focus: root.parent.set_built_date(self.focus, self.text)
                             MDTextField:
                                 id: removal_date
-                                hint_text: "Removal Date"
+
                                 halign: "left"
                                 color: app.theme_cls.text_color
                                 on_focus: root.parent.set_removal_date(self.focus, self.text)
@@ -124,14 +97,14 @@
 
                             MDTextField:
                                 id: latitude
-                                hint_text: "Latitude"
+
                                 halign: "left"
                                 color: app.theme_cls.text_color
                                 on_focus: root.parent.set_latitude(self.focus, self.text)
 
                             MDTextField:
                                 id: longitude
-                                hint_text: "Longitude"
+
                                 halign: "left"
                                 color: app.theme_cls.text_color
                                 on_focus: root.parent.set_longitude(self.focus, self.text)
@@ -139,10 +112,10 @@
 
                             MDTextField:
                                 id: elevation
-                                hint_text: "Elevation"
+
                                 halign: "left"
                                 color: app.theme_cls.text_color
-                                on_focus: root.parent.set_longitude(self.focus, self.text)
+                                on_focus: root.parent.set_elevation(self.focus, self.text)
 
 
                         MDGridLayout:
@@ -154,7 +127,6 @@
 
                             MDTextField:
                                 id: division
-                                hint_text: "Division"
                                 halign: "left"
                                 color: app.theme_cls.text_color
                                 on_focus: root.parent.set_division(self.focus, self.text)
