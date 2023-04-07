@@ -114,7 +114,17 @@ class TabletScreenView(MDScreen):
                 iBox.set_image_date = self.update_image_field("date", i)
                 iBox.delete_image = self.remove_image(i)
                 self.ids.photos.add_widget(iBox)
+        alpha_list = sorted(model.structure_list, key=lambda s: s[1])
+        structure_list_items = [{
+            "text": s[1],
+            "viewclass": "OneLineListItem",
+            "on_release": partial(self.nav_to_structure, s[0])
+        } for s in alpha_list]
+        self.nav_list = MDDropdownMenu(items=structure_list_items, width_mult=4)
 
+    def structure_nav_open(self, button):
+        self.nav_list.caller = button
+        self.nav_list.open()
     def file_manager_open(self):
         self.file_manager.show(os.path.expanduser("~"))  # output manager to the screen
         self.manager_open = True
